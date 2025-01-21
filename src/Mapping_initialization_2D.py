@@ -4,7 +4,7 @@ def initialize_map( grid_size, resolution):
 
     grid_size = 100
     resolution = 0.1
-    occupancy_grid = np.zeros((grid_size, grid_size), dtype=0.5)
+    occupancy_grid = np.zeros((grid_size, grid_size))
     return occupancy_grid
 
 

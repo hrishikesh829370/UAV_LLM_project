@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
+from Mapping_initialization_2D import occupancy_grid
 
-plt.imshow(occupancy_grid, cmap = "grey")
+plt.imshow(occupancy_grid, cmap = "gray")
 plt.show()
 
 

@@ -22,12 +22,12 @@ async def random_exploration(drone, map_size, resolution, step_size):
             current_yaw = yaw
             position_yaw = PositionNedYaw(current_x, current_y, -0.5, yaw)
 
-            await drone.offbaord.set_position_ned(position_yaw)
+            await drone.offboard.set_position_ned(position_yaw)
             lidar_data = await get_lidar_data(drone)
             occupancy_grid = update_map(occupancy_grid, lidar_data, (current_x, current_y), yaw)  
             await asyncio.sleep(0.1)
 
-        plt.imshow(occupancy_grid, cmap= "grey")
+        plt.imshow(occupancy_grid, cmap= "gray")
         plt.pause(0.1)
 
         next_x = random.uniform(0, max_x)
@@ -43,7 +43,7 @@ async def random_exploration(drone, map_size, resolution, step_size):
         #Move to the new waypoint
         print(f"Moving to new waypoint: ({next_x:.2f},{next_y:.2f})")
         position_ned_yaw = PositionNedYaw(next_x, next_y, -0.5,current_yaw)
-        await drone.offbaord.set_position_ned(position_ned_yaw)
+        await drone.offboard.set_position_ned(position_ned_yaw)
         await asyncio.sleep(0.1)
 
     return occupancy_grid
